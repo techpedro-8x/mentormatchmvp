@@ -1,16 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { Roles } from "@/components/landing/Roles";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { QuoteBanner } from "@/components/landing/QuoteBanner";
+import { Pricing } from "@/components/landing/Pricing";
+import { CTASection } from "@/components/landing/CTASection";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main className="bg-paper text-ink min-h-screen overflow-x-hidden">
+      <Navbar />
+      <Hero />
+      <Roles />
+      <HowItWorks />
+      <QuoteBanner />
+      <Pricing />
+      <CTASection />
+      <footer className="px-6 md:px-10 py-10 border-t border-ink/8 text-xs uppercase tracking-[0.2em] text-ink/50 flex flex-col md:flex-row justify-between gap-4 max-w-[1440px] mx-auto">
+        <span>MentorMatch — Protótipo 2026</span>
+        <span className="font-serif normal-case tracking-normal text-sm italic text-ink/60">
+          Mentoria honesta entre quem viveu e quem está prestes a viver.
+        </span>
+      </footer>
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
