@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 const plans = [
   {
     name: "Encontro",
@@ -62,13 +60,9 @@ export const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <Button
-                variant={p.highlighted ? "editorialOutline" : "editorial"}
-                size="editorial"
-                className={`mt-10 relative ${p.highlighted ? "!border-paper/30 !text-paper hover:!bg-paper hover:!text-ink" : "!bg-electric hover:!bg-ink"}`}
-              >
-                Começar agora
-              </Button>
+              <button type="button" className="cssbuttons-io mt-10 relative self-start">
+                <span>Começar agora</span>
+              </button>
             </article>
           ))}
         </div>
