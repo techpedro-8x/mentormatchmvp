@@ -131,15 +131,20 @@
 .cssbuttons-io {
   position: relative;
   font-family: inherit;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.05em;
-  border-radius: 0.8em;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 9999px;
   cursor: pointer;
   border: none;
-  background: hsl(var(--electric));
-  color: ghostwhite;
+  background: hsl(var(--hotpink));
+  color: hsl(var(--paper));
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .cssbuttons-io svg {
@@ -154,7 +159,7 @@
   transition: color 0.4s;
   display: inline-flex;
   align-items: center;
-  padding: 0.8em 1.2em 0.8em 1.05em;
+  padding: 1.25rem 2rem;
 }
 
 .cssbuttons-io::before,
@@ -169,7 +174,7 @@
 
 .cssbuttons-io::before {
   content: "";
-  background: #000;
+  background: hsl(var(--electric));
   width: 120%;
   left: -10%;
   transform: skew(30deg);
