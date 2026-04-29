@@ -20,12 +20,12 @@ const plans = [
 
 export const Pricing = () => {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-10 bg-clay/30 border-y border-ink/5">
+    <section className="py-24 md:py-32 px-6 md:px-10 bg-softgray border-y border-ink/5">
       <div className="max-w-[1240px] mx-auto">
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.22em] text-terracotta mb-6">Planos</p>
-          <h2 className="font-serif text-5xl md:text-6xl tracking-tight text-ink leading-[0.95] text-balance">
-            Mentoria no seu <span className="italic text-sage">ritmo.</span>
+          <p className="text-xs uppercase tracking-[0.18em] font-semibold text-hotpink mb-6">Planos</p>
+          <h2 className="font-display font-bold text-5xl md:text-6xl tracking-[-0.04em] text-ink leading-[0.95] text-balance">
+            Mentoria no seu <span className="text-electric">ritmo.</span>
           </h2>
           <p className="text-ink/70 mt-6 leading-relaxed">
             Comece de graça e, se quiser ir mais fundo, escolha um mentor para uma jornada contínua.
@@ -36,25 +36,28 @@ export const Pricing = () => {
           {plans.map((p) => (
             <article
               key={p.name}
-              className={`p-10 rounded-3xl border transition-all duration-500 flex flex-col ${
+              className={`p-10 rounded-3xl border transition-all duration-300 flex flex-col ${
                 p.highlighted
-                  ? "bg-ink text-paper border-ink shadow-editorial"
-                  : "bg-paper border-ink/8 hover:border-ink/20"
+                  ? "bg-ink text-paper border-ink shadow-editorial relative overflow-hidden"
+                  : "bg-paper border-ink/10 hover:border-electric"
               }`}
             >
+              {p.highlighted && (
+                <div className="absolute -top-20 -right-20 size-56 bg-electric rounded-full blur-3xl opacity-40" aria-hidden />
+              )}
               <div className="flex items-baseline justify-between mb-2">
-                <h3 className="font-serif text-3xl tracking-tight">{p.name}</h3>
-                <span className={`text-xs uppercase tracking-[0.2em] ${p.highlighted ? "text-paper/60" : "text-ink/50"}`}>
+                <h3 className="font-display font-bold text-3xl tracking-tight relative">{p.name}</h3>
+                <span className={`text-xs uppercase tracking-[0.18em] font-semibold relative ${p.highlighted ? "text-hotpink" : "text-electric"}`}>
                   {p.price}
                 </span>
               </div>
-              <p className={`mt-2 text-[15px] leading-relaxed ${p.highlighted ? "text-paper/75" : "text-ink/70"}`}>
+              <p className={`mt-2 text-[15px] leading-relaxed relative ${p.highlighted ? "text-paper/75" : "text-ink/70"}`}>
                 {p.desc}
               </p>
-              <ul className="mt-8 space-y-3 flex-1">
+              <ul className="mt-8 space-y-3 flex-1 relative">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm">
-                    <span className={p.highlighted ? "text-terracotta" : "text-sage"}>✦</span>
+                    <span className={p.highlighted ? "text-hotpink" : "text-electric"}>●</span>
                     <span className={p.highlighted ? "text-paper/85" : "text-ink/75"}>{f}</span>
                   </li>
                 ))}
@@ -62,7 +65,7 @@ export const Pricing = () => {
               <Button
                 variant={p.highlighted ? "editorialOutline" : "editorial"}
                 size="editorial"
-                className={`mt-10 ${p.highlighted ? "!border-paper/30 !text-paper hover:!bg-paper hover:!text-ink" : ""}`}
+                className={`mt-10 relative ${p.highlighted ? "!border-paper/30 !text-paper hover:!bg-paper hover:!text-ink" : "!bg-electric hover:!bg-ink"}`}
               >
                 Começar agora
               </Button>

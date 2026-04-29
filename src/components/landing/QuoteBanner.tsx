@@ -13,12 +13,12 @@ export const QuoteBanner = () => {
             height={1024}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-ink/60 via-ink/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-electric/40 to-hotpink/30" />
           <div className="absolute bottom-10 left-8 md:bottom-14 md:left-14 max-w-3xl">
-            <p className="font-serif text-3xl md:text-5xl text-paper leading-[1.05] text-balance drop-shadow-sm">
+            <p className="font-display font-semibold text-3xl md:text-5xl text-paper leading-[1.05] tracking-[-0.03em] text-balance drop-shadow-sm">
               "Foi como conversar com a irmã mais velha que eu não tenho — só que ela cursava exatamente Arquitetura na FAU."
             </p>
-            <p className="text-paper/85 mt-6 text-xs font-medium tracking-[0.22em] uppercase">
+            <p className="text-paper/90 mt-6 text-xs font-semibold tracking-[0.18em] uppercase">
               — Mariana T., 17 anos · São Paulo
             </p>
           </div>
