@@ -27,8 +27,8 @@ export const Navbar = () => {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex items-center justify-between">
-        <a href="#" className="font-serif text-2xl tracking-tight text-ink">
-          MentorMatch<span className="text-terracotta">.</span>
+        <a href="#" className="font-display font-bold text-2xl tracking-tight text-ink">
+          MentorMatch<span className="text-hotpink">.</span>
         </a>
 
         <div className="hidden lg:flex items-center gap-10">
@@ -36,7 +36,7 @@ export const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="text-xs uppercase tracking-[0.18em] font-medium text-ink/65 hover:text-ink transition-colors"
+              className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/65 hover:text-electric transition-colors"
             >
               {l.label}
             </a>
@@ -46,11 +46,11 @@ export const Navbar = () => {
         <div className="flex items-center gap-3">
           <a
             href="#login"
-            className="hidden sm:inline-block text-xs uppercase tracking-[0.18em] font-medium text-ink/70 hover:text-terracotta transition-colors"
+            className="hidden sm:inline-block text-xs uppercase tracking-[0.16em] font-semibold text-ink/70 hover:text-electric transition-colors"
           >
             Entrar
           </a>
-          <Button variant="editorial" size="editorial" className="!py-3 !text-[10px]">
+          <Button variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
             Cadastre-se
           </Button>
         </div>

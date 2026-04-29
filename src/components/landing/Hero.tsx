@@ -8,27 +8,26 @@ export const Hero = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center relative">
         <div className="lg:col-span-6 flex flex-col gap-10 animate-fade-up">
-          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-ink/55">
-            <span className="block w-10 h-px bg-ink/30" />
+          <div className="inline-flex items-center gap-2 self-start text-[11px] uppercase tracking-[0.18em] font-semibold text-electric bg-electric/10 px-3 py-1.5 rounded-full">
+            <span className="size-1.5 rounded-full bg-electric animate-pulse" />
             Mentoria entre estudantes
           </div>
 
-          <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-[0.92] tracking-tight text-balance text-ink">
-            O futuro
+          <h1 className="font-display font-bold text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-[-0.04em] text-balance text-ink">
+            O futuro não
             <br />
-            <span className="italic text-terracotta">não precisa ser</span>
-            <br />
-            um mistério.
+            precisa ser um{" "}
+            <span className="text-electric">mistério</span>
+            <span className="text-hotpink">.</span>
           </h1>
 
           <p className="text-lg md:text-xl leading-relaxed text-ink/75 max-w-[48ch] text-pretty">
-            Sente para um café com quem já esteve no seu lugar. Conectamos estudantes
-            do ensino médio a universitários para conversas reais sobre cursos,
-            faculdade e o que vem depois.
+            Conectamos estudantes do ensino médio com universitários reais para
+            conversas honestas sobre cursos, faculdade e o que vem depois.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
-            <Button asChild variant="editorial" size="editorial">
+            <Button asChild variant="editorial" size="editorial" className="!bg-electric hover:!bg-ink">
               <a href="#estudantes">Encontrar um mentor</a>
             </Button>
             <Button asChild variant="editorialOutline" size="editorial">
@@ -36,14 +35,14 @@ export const Hero = () => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-6 pt-6 text-xs uppercase tracking-[0.2em] text-ink/55">
+          <div className="flex items-center gap-6 pt-6 text-xs uppercase tracking-[0.18em] font-medium text-ink/60">
             <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
+              {["bg-electric", "bg-hotpink", "bg-ink", "bg-electric/70"].map((c, i) => (
                 <div
                   key={i}
-                  className="size-8 rounded-full bg-clay border-2 border-paper flex items-center justify-center font-serif text-ink/70 text-sm"
+                  className={`size-8 rounded-full ${c} border-2 border-paper flex items-center justify-center text-paper text-xs font-semibold`}
                 >
-                  {String.fromCharCode(64 + i)}
+                  {String.fromCharCode(65 + i)}
                 </div>
               ))}
             </div>
@@ -52,7 +51,7 @@ export const Hero = () => {
         </div>
 
         <div className="lg:col-span-6 relative animate-fade-up" style={{ animationDelay: "120ms" }}>
-          <div className="aspect-[4/5] w-full rounded-[2rem] overflow-hidden bg-clay relative z-10 shadow-editorial">
+          <div className="aspect-[4/5] w-full rounded-[2rem] overflow-hidden bg-softgray relative z-10 shadow-editorial">
             <img
               src={heroImage}
               alt="Estudante e mentor universitário conversando em uma cafeteria"
@@ -62,12 +61,12 @@ export const Hero = () => {
             />
           </div>
 
-          <div className="absolute -bottom-8 -left-8 size-48 bg-sage rounded-full mix-blend-multiply blur-3xl opacity-60 animate-blob" aria-hidden />
-          <div className="absolute -top-12 -right-12 size-64 bg-terracotta rounded-full mix-blend-multiply blur-3xl opacity-40 animate-blob" aria-hidden style={{ animationDelay: "3s" }} />
+          <div className="absolute -bottom-8 -left-8 size-56 bg-electric rounded-full blur-3xl opacity-50 animate-blob" aria-hidden />
+          <div className="absolute -top-12 -right-12 size-72 bg-hotpink rounded-full blur-3xl opacity-50 animate-blob" aria-hidden style={{ animationDelay: "3s" }} />
 
-          <div className="absolute -bottom-6 right-4 md:right-8 bg-paper/95 backdrop-blur-sm rounded-2xl p-5 shadow-soft border border-ink/5 max-w-[240px] z-20">
-            <p className="text-xs uppercase tracking-[0.18em] text-ink/55 mb-2">Próxima sessão</p>
-            <p className="font-serif text-lg leading-tight text-ink">
+          <div className="absolute -bottom-6 right-4 md:right-8 bg-paper rounded-2xl p-5 shadow-soft border border-ink/8 max-w-[260px] z-20">
+            <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-electric mb-2">● Próxima sessão</p>
+            <p className="font-display font-semibold text-base leading-tight text-ink">
               Engenharia na USP — quinta, 19h
             </p>
           </div>

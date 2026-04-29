@@ -27,13 +27,13 @@ export const HowItWorks = () => {
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-5">
-            <p className="text-xs uppercase tracking-[0.22em] text-terracotta mb-6">
+            <p className="text-xs uppercase tracking-[0.18em] font-semibold text-hotpink mb-6">
               Como funciona
             </p>
-            <h2 className="font-serif text-5xl md:text-6xl tracking-tight leading-[0.95] text-ink text-balance">
+            <h2 className="font-display font-bold text-5xl md:text-6xl tracking-[-0.04em] leading-[0.95] text-ink text-balance">
               Quatro passos.
               <br />
-              <span className="italic">Zero burocracia.</span>
+              <span className="text-electric">Zero burocracia.</span>
             </h2>
           </div>
           <p className="lg:col-span-6 lg:col-start-7 text-ink/70 text-lg leading-relaxed self-end">
@@ -43,23 +43,26 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/8 rounded-3xl overflow-hidden border border-ink/5">
-          {steps.map((s) => (
-            <div
-              key={s.n}
-              className="bg-paper p-8 md:p-10 hover:bg-clay/40 transition-colors duration-500 min-h-[260px] flex flex-col justify-between"
-            >
-              <span className="font-serif text-3xl text-terracotta">{s.n}</span>
-              <div className="mt-12">
-                <h3 className="font-serif text-2xl text-ink mb-3 tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="text-ink/65 text-sm leading-relaxed text-pretty">
-                  {s.body}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {steps.map((s, i) => {
+            const colors = ["text-electric", "text-hotpink", "text-electric", "text-hotpink"];
+            return (
+              <div
+                key={s.n}
+                className="bg-paper border border-ink/10 rounded-3xl p-8 md:p-10 hover:border-ink hover:-translate-y-1 transition-all duration-300 min-h-[260px] flex flex-col justify-between"
+              >
+                <span className={`font-display font-bold text-4xl ${colors[i]}`}>{s.n}</span>
+                <div className="mt-12">
+                  <h3 className="font-display font-semibold text-2xl text-ink mb-3 tracking-tight">
+                    {s.title}
+                  </h3>
+                  <p className="text-ink/65 text-sm leading-relaxed text-pretty">
+                    {s.body}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

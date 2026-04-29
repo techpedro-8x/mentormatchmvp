@@ -2,55 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* MentorMatch Design System — Editorial Café direction */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap');
+/* MentorMatch Design System — Modern Vibrant direction */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Editorial palette — paper, ink, terracotta, sage, clay */
-    --background: 38 25% 97%;          /* paper #F8F6F3 */
-    --foreground: 30 8% 13%;           /* ink #23211E */
+    /* Modern vibrant palette — white, ink, electric blue, hot pink */
+    --background: 0 0% 100%;            /* white */
+    --foreground: 0 0% 6%;              /* near black #0F0F10 */
 
     --card: 0 0% 100%;
-    --card-foreground: 30 8% 13%;
+    --card-foreground: 0 0% 6%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 30 8% 13%;
+    --popover-foreground: 0 0% 6%;
 
-    --primary: 30 8% 13%;              /* ink */
-    --primary-foreground: 38 25% 97%;
+    --primary: 226 100% 59%;            /* electric blue #2C5CFF */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 36 25% 89%;           /* clay #EAE5DB */
-    --secondary-foreground: 30 8% 13%;
+    --secondary: 0 0% 96%;              /* light gray */
+    --secondary-foreground: 0 0% 6%;
 
-    --muted: 36 25% 92%;
-    --muted-foreground: 30 6% 38%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 14 53% 55%;              /* terracotta #C96A4E */
-    --accent-foreground: 38 25% 97%;
+    --accent: 338 100% 65%;             /* hot pink #FF4D8F */
+    --accent-foreground: 0 0% 100%;
 
-    --sage: 105 9% 59%;                /* sage #91A08B */
-    --sage-foreground: 30 8% 13%;
-
-    --terracotta: 14 53% 55%;
-    --clay: 36 25% 89%;
-    --paper: 38 25% 97%;
-    --ink: 30 8% 13%;
+    /* Brand tokens */
+    --paper: 0 0% 100%;                 /* white */
+    --ink: 0 0% 6%;                     /* black */
+    --electric: 226 100% 59%;           /* blue */
+    --hotpink: 338 100% 65%;            /* pink */
+    --softgray: 0 0% 96%;
+    --sage: 226 100% 59%;               /* legacy alias -> electric */
+    --terracotta: 338 100% 65%;         /* legacy alias -> hotpink */
+    --clay: 0 0% 96%;                   /* legacy alias -> softgray */
 
     --destructive: 0 70% 45%;
-    --destructive-foreground: 38 25% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 8% 13% / 0.08;
-    --input: 30 8% 88%;
-    --ring: 14 53% 55%;
+    --border: 0 0% 6% / 0.08;
+    --input: 0 0% 90%;
+    --ring: 226 100% 59%;
 
-    --radius: 1.25rem;
+    --radius: 1rem;
 
     /* Gradients & shadows */
-    --gradient-warm: radial-gradient(ellipse at top right, hsl(14 53% 55% / 0.18), transparent 60%);
-    --gradient-sage: radial-gradient(ellipse at bottom left, hsl(105 9% 59% / 0.25), transparent 55%);
-    --shadow-editorial: 0 30px 80px -30px hsl(30 8% 13% / 0.18);
-    --shadow-soft: 0 8px 30px -10px hsl(30 8% 13% / 0.08);
+    --gradient-warm: radial-gradient(ellipse at top right, hsl(338 100% 65% / 0.22), transparent 60%);
+    --gradient-sage: radial-gradient(ellipse at bottom left, hsl(226 100% 59% / 0.25), transparent 55%);
+    --gradient-vivid: linear-gradient(135deg, hsl(226 100% 59%), hsl(338 100% 65%));
+    --shadow-editorial: 0 30px 80px -30px hsl(226 100% 59% / 0.35);
+    --shadow-soft: 0 8px 30px -10px hsl(0 0% 6% / 0.10);
 
     --transition-smooth: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -65,25 +68,25 @@
   }
 
   .dark {
-    --background: 30 10% 8%;
-    --foreground: 38 25% 95%;
-    --card: 30 10% 10%;
-    --card-foreground: 38 25% 95%;
-    --popover: 30 10% 10%;
-    --popover-foreground: 38 25% 95%;
-    --primary: 38 25% 95%;
-    --primary-foreground: 30 10% 8%;
-    --secondary: 30 8% 16%;
-    --secondary-foreground: 38 25% 95%;
-    --muted: 30 8% 16%;
-    --muted-foreground: 30 6% 65%;
-    --accent: 14 53% 60%;
-    --accent-foreground: 38 25% 95%;
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 226 100% 65%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 338 100% 70%;
+    --accent-foreground: 0 0% 6%;
     --destructive: 0 60% 45%;
-    --destructive-foreground: 38 25% 95%;
-    --border: 30 8% 20%;
-    --input: 30 8% 20%;
-    --ring: 14 53% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 226 100% 65%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -102,18 +105,19 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: 'ss01', 'cv11';
   }
 
   .font-serif {
-    font-family: 'Instrument Serif', 'Times New Roman', serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    /* Repurposed as the modern display font for headings */
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
   }
 
   ::selection {
-    background-color: hsl(var(--terracotta) / 0.25);
+    background-color: hsl(var(--electric) / 0.25);
     color: hsl(var(--ink));
   }
 }
