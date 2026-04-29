@@ -36,9 +36,6 @@ export const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <a href="#estudantes" className="cssbuttons-io self-start">
               <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                  <path d="M12 2l2.39 4.84L20 7.66l-4 3.9.94 5.5L12 14.77l-4.94 2.6L8 11.56l-4-3.9 5.61-.82L12 2z" />
-                </svg>
                 Encontrar um mentor
               </span>
             </a>
