@@ -24,6 +24,9 @@ export default {
         terracotta: "hsl(var(--terracotta))",
         sage: "hsl(var(--sage))",
         clay: "hsl(var(--clay))",
+        electric: "hsl(var(--electric))",
+        hotpink: "hsl(var(--hotpink))",
+        softgray: "hsl(var(--softgray))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -64,12 +67,14 @@ export default {
         },
       },
       fontFamily: {
-        serif: ["'Instrument Serif'", "Times New Roman", "serif"],
-        sans: ["'DM Sans'", "system-ui", "sans-serif"],
+        serif: ["'Space Grotesk'", "Inter", "system-ui", "sans-serif"],
+        sans: ["'Inter'", "system-ui", "sans-serif"],
+        display: ["'Space Grotesk'", "Inter", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gradient-warm": "var(--gradient-warm)",
         "gradient-sage": "var(--gradient-sage)",
+        "gradient-vivid": "var(--gradient-vivid)",
       },
       boxShadow: {
         editorial: "var(--shadow-editorial)",
