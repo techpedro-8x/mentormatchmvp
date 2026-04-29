@@ -3,8 +3,8 @@ import heroImage from "@/assets/hero-mentoring.jpg";
 
 export const Hero = () => {
   return (
-    <header className="relative pt-36 md:pt-44 pb-20 md:pb-28 px-6 md:px-10 max-w-[1440px] mx-auto overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-warm pointer-events-none" aria-hidden />
+    <header className="relative pt-36 md:pt-44 pb-20 md:pb-28 px-6 md:px-10 max-w-[1440px] mx-auto">
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-warm pointer-events-none" aria-hidden />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center relative">
         <div className="lg:col-span-6 flex flex-col gap-10 animate-fade-up">
