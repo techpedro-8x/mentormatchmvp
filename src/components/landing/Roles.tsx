@@ -54,10 +54,10 @@ export const Roles = () => {
               className={`group bg-paper p-10 rounded-3xl border border-ink/5 ${r.border} hover:shadow-soft transition-all duration-500 flex flex-col justify-between min-h-[420px]`}
             >
               <div>
-                <div className="size-12 rounded-full bg-clay flex items-center justify-center font-serif text-lg mb-8 ${r.accent}">
+                <div className="size-12 rounded-full bg-clay flex items-center justify-center font-serif text-lg mb-8">
                   <span className={r.accent}>{r.number}</span>
                 </div>
-                <h3 className={`text-2xl font-serif tracking-tight mb-4 text-ink group-hover:${r.accent} transition-colors`}>
+                <h3 className="text-2xl font-serif tracking-tight mb-4 text-ink transition-colors">
                   {r.title}
                 </h3>
                 <p className="text-ink/70 leading-relaxed text-[15px] text-pretty">
