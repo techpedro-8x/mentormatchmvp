@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const links = [
@@ -44,14 +45,14 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#login"
+          <Link
+            to="/auth"
             className="hidden sm:inline-block text-xs uppercase tracking-[0.16em] font-semibold text-ink/70 hover:text-electric transition-colors"
           >
             Entrar
-          </a>
-          <Button variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
-            Cadastre-se
+          </Link>
+          <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
+            <Link to="/auth">Cadastre-se</Link>
           </Button>
         </div>
       </div>
