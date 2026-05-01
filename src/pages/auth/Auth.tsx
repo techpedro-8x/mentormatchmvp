@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, GraduationCap, Sparkles } from "lucide-react";
+import { ArrowRight, GraduationCap, LogIn, Sparkles, UserPlus } from "lucide-react";
 
 const Auth = () => {
   return (
@@ -33,7 +34,7 @@ const Auth = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-up" style={{ animationDelay: "120ms" }}>
             <RoleCard
-              to="/cadastro/aluno"
+              signupTo="/cadastro/aluno"
               loginTo="/login/aluno"
               icon={<GraduationCap className="size-7" />}
               tag="Sou aluno"
@@ -42,7 +43,7 @@ const Auth = () => {
               accent="electric"
             />
             <RoleCard
-              to="/cadastro/mentor"
+              signupTo="/cadastro/mentor"
               loginTo="/login/mentor"
               icon={<Sparkles className="size-7" />}
               tag="Sou mentor"
@@ -58,7 +59,7 @@ const Auth = () => {
 };
 
 const RoleCard = ({
-  to,
+  signupTo,
   loginTo,
   icon,
   tag,
@@ -66,7 +67,7 @@ const RoleCard = ({
   description,
   accent,
 }: {
-  to: string;
+  signupTo: string;
   loginTo: string;
   icon: React.ReactNode;
   tag: string;
@@ -74,9 +75,17 @@ const RoleCard = ({
   description: string;
   accent: "electric" | "hotpink";
 }) => {
+  const [mode, setMode] = useState<"signup" | "login">("signup");
   const accentBg = accent === "electric" ? "bg-electric" : "bg-hotpink";
   const accentText = accent === "electric" ? "text-electric" : "text-hotpink";
   const accentBgSoft = accent === "electric" ? "bg-electric/10" : "bg-hotpink/10";
+
+  const isSignup = mode === "signup";
+  const ctaTo = isSignup ? signupTo : loginTo;
+  const ctaLabel = isSignup ? "Criar conta" : "Entrar";
+  const CtaIcon = isSignup ? UserPlus : LogIn;
+  const switchLabel = isSignup ? "Já tenho conta" : "Não tem conta?";
+  const switchAction = isSignup ? "Entrar" : "Cadastre-se";
 
   return (
     <div className="group relative bg-paper rounded-3xl p-8 border border-ink/8 shadow-soft hover:shadow-editorial transition-all duration-500 hover:-translate-y-1 overflow-hidden">
@@ -100,19 +109,27 @@ const RoleCard = ({
         <p className="text-ink/65 leading-relaxed">{description}</p>
 
         <Link
-          to={to}
-          className={`mt-4 inline-flex items-center justify-between gap-3 px-5 py-4 rounded-2xl ${accentBg} text-paper font-semibold text-sm uppercase tracking-[0.16em] hover:opacity-90 transition-all`}
+          key={mode}
+          to={ctaTo}
+          className={`mt-4 inline-flex items-center justify-between gap-3 px-5 py-4 rounded-2xl ${accentBg} text-paper font-semibold text-sm uppercase tracking-[0.16em] hover:opacity-90 transition-all animate-fade-up`}
         >
-          <span>Criar conta</span>
+          <span className="inline-flex items-center gap-2">
+            <CtaIcon className="size-4" />
+            {ctaLabel}
+          </span>
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </Link>
 
-        <Link
-          to={loginTo}
+        <button
+          type="button"
+          onClick={() => setMode(isSignup ? "login" : "signup")}
           className="text-sm text-ink/60 hover:text-ink text-center transition-colors"
         >
-          Já tenho conta · <span className="font-semibold underline-offset-4 hover:underline">Entrar</span>
-        </Link>
+          {switchLabel}{" "}
+          <span className={`font-semibold underline-offset-4 hover:underline ${accentText}`}>
+            {switchAction}
+          </span>
+        </button>
       </div>
     </div>
   );
