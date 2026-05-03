@@ -46,7 +46,7 @@ export const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/auth"
+            to="/auth?mode=login"
             className="hidden sm:inline-block text-xs uppercase tracking-[0.16em] font-semibold text-ink/70 hover:text-electric transition-colors"
           >
             Entrar
