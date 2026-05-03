@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, GraduationCap, LogIn, Sparkles, UserPlus } from "lucide-react";
 
 const Auth = () => {
+  const [searchParams] = useSearchParams();
+  const initialMode = searchParams.get("mode") === "login" ? "login" : "signup";
   return (
     <main className="min-h-screen w-full bg-paper relative overflow-hidden flex flex-col">
       <div className="absolute inset-0 bg-gradient-warm pointer-events-none" aria-hidden />
@@ -34,6 +36,7 @@ const Auth = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-up" style={{ animationDelay: "120ms" }}>
             <RoleCard
+              initialMode={initialMode}
               signupTo="/cadastro/aluno"
               loginTo="/login/aluno"
               icon={<GraduationCap className="size-7" />}
@@ -43,6 +46,7 @@ const Auth = () => {
               accent="electric"
             />
             <RoleCard
+              initialMode={initialMode}
               signupTo="/cadastro/mentor"
               loginTo="/login/mentor"
               icon={<Sparkles className="size-7" />}
@@ -59,6 +63,7 @@ const Auth = () => {
 };
 
 const RoleCard = ({
+  initialMode = "signup",
   signupTo,
   loginTo,
   icon,
@@ -67,6 +72,7 @@ const RoleCard = ({
   description,
   accent,
 }: {
+  initialMode?: "signup" | "login";
   signupTo: string;
   loginTo: string;
   icon: React.ReactNode;
@@ -75,7 +81,7 @@ const RoleCard = ({
   description: string;
   accent: "electric" | "hotpink";
 }) => {
-  const [mode, setMode] = useState<"signup" | "login">("signup");
+  const [mode, setMode] = useState<"signup" | "login">(initialMode);
   const accentBg = accent === "electric" ? "bg-electric" : "bg-hotpink";
   const accentText = accent === "electric" ? "text-electric" : "text-hotpink";
   const accentBgSoft = accent === "electric" ? "bg-electric/10" : "bg-hotpink/10";
