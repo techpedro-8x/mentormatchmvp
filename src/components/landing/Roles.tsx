@@ -36,10 +36,10 @@ const roles = [
 
 export const Roles = () => {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-10 bg-softgray border-t border-ink/5">
+    <section className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 md:px-10 bg-softgray border-t border-ink/5">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-8">
-          <h2 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] max-w-[14ch] leading-[0.95] text-ink">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 md:gap-8">
+          <h2 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] max-w-[14ch] leading-[0.95] text-ink">
             Espaço para{" "}
             <span className="text-electric">todos</span> os{" "}
             <span className="text-hotpink">caminhos.</span>
@@ -50,12 +50,12 @@ export const Roles = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {roles.map((r) => (
             <article
               key={r.id}
               id={r.id}
-              className={`group bg-paper p-10 rounded-3xl border border-ink/8 ${r.border} hover:shadow-editorial transition-all duration-300 flex flex-col justify-between min-h-[420px]`}
+              className={`group bg-paper p-7 sm:p-10 rounded-3xl border border-ink/8 ${r.border} hover:shadow-editorial transition-all duration-300 flex flex-col justify-between min-h-[360px] sm:min-h-[420px]`}
             >
               <div>
                 <div className={`size-12 rounded-2xl ${r.bg} flex items-center justify-center text-paper font-display font-bold text-base mb-8`}>

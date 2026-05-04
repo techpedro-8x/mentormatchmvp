@@ -16,7 +16,7 @@ const Index = () => {
       <QuoteBanner />
       <Pricing />
       <CTASection />
-      <footer className="px-6 md:px-10 py-10 border-t border-ink/8 text-xs uppercase tracking-[0.2em] text-ink/50 flex flex-col md:flex-row justify-between gap-4 max-w-[1440px] mx-auto">
+      <footer className="px-5 sm:px-6 md:px-10 py-8 sm:py-10 border-t border-ink/8 text-[11px] sm:text-xs uppercase tracking-[0.2em] text-ink/50 flex flex-col md:flex-row justify-between gap-4 max-w-[1440px] mx-auto">
         <span>MentorMatch — Protótipo 2026</span>
         <span className="font-serif normal-case tracking-normal text-sm italic text-ink/60">
           Mentoria honesta entre quem viveu e quem está prestes a viver.
