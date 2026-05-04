@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, GraduationCap, LogIn, Sparkles, UserPlus } from "lucide-react";
 
@@ -82,6 +82,9 @@ const RoleCard = ({
   accent: "electric" | "hotpink";
 }) => {
   const [mode, setMode] = useState<"signup" | "login">(initialMode);
+  useEffect(() => {
+    setMode(initialMode);
+  }, [initialMode]);
   const accentBg = accent === "electric" ? "bg-electric" : "bg-hotpink";
   const accentText = accent === "electric" ? "text-electric" : "text-hotpink";
   const accentBgSoft = accent === "electric" ? "bg-electric/10" : "bg-hotpink/10";
