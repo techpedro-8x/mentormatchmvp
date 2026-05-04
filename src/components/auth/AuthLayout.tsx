@@ -74,7 +74,7 @@ export const AuthLayout = ({
         </aside>
 
         {/* Right form panel */}
-        <section className="flex items-center justify-center p-6 sm:p-10 lg:p-12">
+        <section className="flex items-center justify-center px-5 py-8 sm:p-10 lg:p-12">
           <div className="w-full max-w-md animate-fade-up">
             <Link
               to="/"
@@ -89,10 +89,10 @@ export const AuthLayout = ({
               {badge}
             </div>
 
-            <h1 className="font-display font-bold text-4xl sm:text-5xl leading-[0.95] tracking-[-0.04em] text-ink mb-3">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-[0.95] tracking-[-0.04em] text-ink mb-3">
               {title}
             </h1>
-            <p className="text-ink/65 text-base mb-10 leading-relaxed">
+            <p className="text-ink/65 text-sm sm:text-base mb-8 sm:mb-10 leading-relaxed">
               {subtitle}
             </p>
 
