@@ -1,5 +1,8 @@
 import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable";
+import { toast } from "sonner";
 import { AuthLayout } from "@/components/auth/AuthLayout";
 import {
   TextField,
@@ -10,11 +13,46 @@ import {
 
 const CadastroAluno = () => {
   const [loading, setLoading] = useState(false);
+  const [google, setGoogle] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const data = new FormData(form);
     setLoading(true);
-    setTimeout(() => setLoading(false), 800);
+    const { error } = await supabase.auth.signUp({
+      email: String(data.get("email")),
+      password: String(data.get("password")),
+      options: {
+        emailRedirectTo: `${window.location.origin}/app/aluno`,
+        data: {
+          role: "aluno",
+          full_name: String(data.get("name")),
+          grade: String(data.get("grade")),
+          school: String(data.get("school")),
+        },
+      },
+    });
+    setLoading(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Conta criada! Bem-vindo.");
+    navigate("/app/aluno", { replace: true });
+  };
+
+  const handleGoogle = async () => {
+    setGoogle(true);
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin + "/app/aluno",
+      extraParams: { prompt: "select_account" },
+    });
+    if (result.error) {
+      toast.error("Não foi possível entrar com Google");
+      setGoogle(false);
+    }
   };
 
   return (
@@ -32,7 +70,7 @@ const CadastroAluno = () => {
         </>
       }
     >
-      <GoogleButton label="Continuar com Google" />
+      <GoogleButton label={google ? "Conectando..." : "Continuar com Google"} onClick={handleGoogle} disabled={google} />
       <Divider />
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
