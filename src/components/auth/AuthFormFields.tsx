@@ -88,14 +88,17 @@ PasswordField.displayName = "PasswordField";
 export const GoogleButton = ({
   label,
   onClick,
+  disabled,
 }: {
   label: string;
   onClick?: () => void;
+  disabled?: boolean;
 }) => (
   <button
     type="button"
     onClick={onClick}
-    className="w-full flex items-center justify-center gap-3 px-5 py-4 rounded-2xl border border-ink/15 bg-paper hover:bg-softgray hover:border-ink/30 transition-all duration-300 text-sm font-semibold text-ink group"
+    disabled={disabled}
+    className="w-full flex items-center justify-center gap-3 px-5 py-4 rounded-2xl border border-ink/15 bg-paper hover:bg-softgray hover:border-ink/30 transition-all duration-300 text-sm font-semibold text-ink group disabled:opacity-60 disabled:cursor-not-allowed"
   >
     <svg
       className="size-5 transition-transform group-hover:scale-110"
