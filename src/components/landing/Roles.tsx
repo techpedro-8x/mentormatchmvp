@@ -68,13 +68,13 @@ export const Roles = () => {
                   {r.body}
                 </p>
               </div>
-              <a
-                href="#cadastro"
+              <Link
+                to={r.to}
                 className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] ${r.accent} mt-12 group-hover:gap-3 transition-all`}
               >
                 {r.cta}
                 <span className="text-base leading-none">→</span>
-              </a>
+              </Link>
             </article>
           ))}
         </div>
