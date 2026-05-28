@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const roles = [
   {
     id: "estudantes",
@@ -9,6 +11,7 @@ const roles = [
     body:
       "Dúvidas sobre vestibular? Indecisão entre cursos? Encontre um mentor universitário que vive o que você quer estudar e tire suas dúvidas em um papo direto, sem pressão.",
     cta: "Sou estudante",
+    to: "/cadastro/aluno",
   },
   {
     id: "mentores",
@@ -20,6 +23,7 @@ const roles = [
     body:
       "Compartilhe sua vivência, ajude quem está onde você esteve e valide horas complementares. Mentorias podem ser gratuitas ou remuneradas — você escolhe.",
     cta: "Quero ser mentor",
+    to: "/cadastro/mentor",
   },
   {
     id: "escolas",
@@ -31,6 +35,7 @@ const roles = [
     body:
       "Ofereça aos seus alunos do terceirão acesso a uma rede curada de universitários reais. Acompanhe sessões e engajamento por turma.",
     cta: "Falar com a equipe",
+    to: "/auth",
   },
 ];
 
@@ -68,13 +73,13 @@ export const Roles = () => {
                   {r.body}
                 </p>
               </div>
-              <a
-                href="#cadastro"
+              <Link
+                to={r.to}
                 className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] ${r.accent} mt-12 group-hover:gap-3 transition-all`}
               >
                 {r.cta}
                 <span className="text-base leading-none">→</span>
-              </a>
+              </Link>
             </article>
           ))}
         </div>
