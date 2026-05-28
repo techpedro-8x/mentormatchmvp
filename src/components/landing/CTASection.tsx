@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const CTASection = () => {
   return (
@@ -21,11 +22,11 @@ export const CTASection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
-            <Button variant="editorial" size="editorial" className="!bg-paper !text-ink hover:!bg-electric hover:!text-paper w-full sm:w-auto justify-center">
-              Sou estudante
+            <Button asChild variant="editorial" size="editorial" className="!bg-paper !text-ink hover:!bg-electric hover:!text-paper w-full sm:w-auto justify-center">
+              <Link to="/cadastro/aluno">Sou estudante</Link>
             </Button>
-            <Button variant="editorialOutline" size="editorial" className="!border-paper/30 !text-paper hover:!bg-hotpink hover:!border-hotpink hover:!text-paper w-full sm:w-auto justify-center">
-              Quero ser mentor
+            <Button asChild variant="editorialOutline" size="editorial" className="!border-paper/30 !text-paper hover:!bg-hotpink hover:!border-hotpink hover:!text-paper w-full sm:w-auto justify-center">
+              <Link to="/cadastro/mentor">Quero ser mentor</Link>
             </Button>
           </div>
         </div>

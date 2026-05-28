@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const roles = [
   {
     id: "estudantes",
@@ -9,6 +11,7 @@ const roles = [
     body:
       "Dúvidas sobre vestibular? Indecisão entre cursos? Encontre um mentor universitário que vive o que você quer estudar e tire suas dúvidas em um papo direto, sem pressão.",
     cta: "Sou estudante",
+    to: "/cadastro/aluno",
   },
   {
     id: "mentores",
@@ -20,6 +23,7 @@ const roles = [
     body:
       "Compartilhe sua vivência, ajude quem está onde você esteve e valide horas complementares. Mentorias podem ser gratuitas ou remuneradas — você escolhe.",
     cta: "Quero ser mentor",
+    to: "/cadastro/mentor",
   },
   {
     id: "escolas",
@@ -31,6 +35,7 @@ const roles = [
     body:
       "Ofereça aos seus alunos do terceirão acesso a uma rede curada de universitários reais. Acompanhe sessões e engajamento por turma.",
     cta: "Falar com a equipe",
+    to: "/auth",
   },
 ];
 
