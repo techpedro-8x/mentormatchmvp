@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LayoutDashboard, LogOut } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { label: "Para Estudantes", href: "#estudantes" },
@@ -13,6 +14,15 @@ const links = [
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+  const dashPath = profile?.role === "mentor" ? "/app/mentor" : "/app/aluno";
+
+  const handleLogout = async () => {
+    await signOut();
+    setOpen(false);
+    navigate("/", { replace: true });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -47,15 +57,32 @@ export const Navbar = () => {
         </div>
 
         <div className="hidden sm:flex items-center gap-3">
-          <Link
-            to="/auth?mode=login"
-            className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/70 hover:text-electric transition-colors"
-          >
-            Entrar
-          </Link>
-          <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
-            <Link to="/auth">Cadastre-se</Link>
-          </Button>
+          {user ? (
+            <>
+              <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
+                <Link to={dashPath}><LayoutDashboard className="!size-3.5" />Meu painel</Link>
+              </Button>
+              <button
+                onClick={handleLogout}
+                aria-label="Sair"
+                className="inline-flex items-center justify-center size-10 rounded-full border border-ink/10 text-ink/70 hover:text-hotpink hover:border-ink/25 transition-colors"
+              >
+                <LogOut className="size-4" />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/auth?mode=login"
+                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/70 hover:text-electric transition-colors"
+              >
+                Entrar
+              </Link>
+              <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
+                <Link to="/auth">Cadastre-se</Link>
+              </Button>
+            </>
+          )}
         </div>
 
         <button
@@ -82,16 +109,32 @@ export const Navbar = () => {
             </a>
           ))}
           <div className="h-px bg-ink/10 my-1" />
-          <Link
-            to="/auth?mode=login"
-            onClick={() => setOpen(false)}
-            className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/70"
-          >
-            Entrar
-          </Link>
-          <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric">
-            <Link to="/auth" onClick={() => setOpen(false)}>Cadastre-se</Link>
-          </Button>
+          {user ? (
+            <>
+              <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric">
+                <Link to={dashPath} onClick={() => setOpen(false)}>Meu painel</Link>
+              </Button>
+              <button
+                onClick={handleLogout}
+                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/70 text-left"
+              >
+                Sair
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/auth?mode=login"
+                onClick={() => setOpen(false)}
+                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/70"
+              >
+                Entrar
+              </Link>
+              <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric">
+                <Link to="/auth" onClick={() => setOpen(false)}>Cadastre-se</Link>
+              </Button>
+            </>
+          )}
         </div>
       )}
     </nav>
