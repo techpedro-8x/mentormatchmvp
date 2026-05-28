@@ -14,7 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      mentorship_requests: {
+        Row: {
+          created_at: string
+          id: string
+          mentor_id: string
+          message: string
+          status: Database["public"]["Enums"]["request_status"]
+          student_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          mentor_id: string
+          message?: string
+          status?: Database["public"]["Enums"]["request_status"]
+          student_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          mentor_id?: string
+          message?: string
+          status?: Database["public"]["Enums"]["request_status"]
+          student_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mentorship_requests_mentor_id_fkey"
+            columns: ["mentor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mentorship_requests_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          areas: string[] | null
+          avatar_url: string | null
+          bio: string | null
+          course: string | null
+          created_at: string
+          full_name: string
+          grade: string | null
+          id: string
+          period: string | null
+          role: Database["public"]["Enums"]["user_role"]
+          school: string | null
+          university: string | null
+          updated_at: string
+        }
+        Insert: {
+          areas?: string[] | null
+          avatar_url?: string | null
+          bio?: string | null
+          course?: string | null
+          created_at?: string
+          full_name?: string
+          grade?: string | null
+          id: string
+          period?: string | null
+          role: Database["public"]["Enums"]["user_role"]
+          school?: string | null
+          university?: string | null
+          updated_at?: string
+        }
+        Update: {
+          areas?: string[] | null
+          avatar_url?: string | null
+          bio?: string | null
+          course?: string | null
+          created_at?: string
+          full_name?: string
+          grade?: string | null
+          id?: string
+          period?: string | null
+          role?: Database["public"]["Enums"]["user_role"]
+          school?: string | null
+          university?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +115,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      request_status: "pending" | "accepted" | "declined"
+      user_role: "aluno" | "mentor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +243,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      request_status: ["pending", "accepted", "declined"],
+      user_role: ["aluno", "mentor"],
+    },
   },
 } as const
