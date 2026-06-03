@@ -14,12 +14,37 @@ export type Database = {
   }
   public: {
     Tables: {
+      mentor_availability: {
+        Row: {
+          booked: boolean
+          created_at: string
+          id: string
+          mentor_id: string
+          slot_at: string
+        }
+        Insert: {
+          booked?: boolean
+          created_at?: string
+          id?: string
+          mentor_id: string
+          slot_at: string
+        }
+        Update: {
+          booked?: boolean
+          created_at?: string
+          id?: string
+          mentor_id?: string
+          slot_at?: string
+        }
+        Relationships: []
+      }
       mentorship_requests: {
         Row: {
           created_at: string
           id: string
           mentor_id: string
           message: string
+          slot_id: string | null
           status: Database["public"]["Enums"]["request_status"]
           student_id: string
           updated_at: string
@@ -29,6 +54,7 @@ export type Database = {
           id?: string
           mentor_id: string
           message?: string
+          slot_id?: string | null
           status?: Database["public"]["Enums"]["request_status"]
           student_id: string
           updated_at?: string
@@ -38,6 +64,7 @@ export type Database = {
           id?: string
           mentor_id?: string
           message?: string
+          slot_id?: string | null
           status?: Database["public"]["Enums"]["request_status"]
           student_id?: string
           updated_at?: string
@@ -48,6 +75,13 @@ export type Database = {
             columns: ["mentor_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mentorship_requests_slot_id_fkey"
+            columns: ["slot_id"]
+            isOneToOne: false
+            referencedRelation: "mentor_availability"
             referencedColumns: ["id"]
           },
           {
