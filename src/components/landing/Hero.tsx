@@ -21,7 +21,7 @@ export const Hero = () => {
             Mentoria entre estudantes
           </div>
 
-          <h1 className="font-display font-bold text-[2.75rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] leading-[0.95] sm:leading-[0.9] tracking-[-0.04em] text-balance text-ink">
+          <h1 className="font-display font-bold text-[clamp(2.25rem,11vw,3.25rem)] sm:text-6xl md:text-7xl lg:text-[7rem] leading-[0.95] sm:leading-[0.9] tracking-[-0.04em] text-balance text-ink break-words">
             O futuro não
             <br />
             precisa ser um{" "}
@@ -59,7 +59,7 @@ export const Hero = () => {
         </div>
 
         <div className="lg:col-span-6 relative animate-fade-up" style={{ animationDelay: "120ms" }}>
-          <div className="aspect-[4/5] sm:aspect-[4/5] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-softgray relative z-10 shadow-editorial">
+          <div className="aspect-[4/5] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-softgray relative z-10 shadow-editorial">
             <img
               src={heroImage}
               alt="Estudante e mentor universitário conversando em uma cafeteria"
@@ -72,7 +72,7 @@ export const Hero = () => {
           <div className="absolute -bottom-8 -left-8 size-56 bg-electric rounded-full blur-3xl opacity-50 animate-blob" aria-hidden />
           <div className="absolute -top-12 -right-12 size-72 bg-hotpink rounded-full blur-3xl opacity-50 animate-blob" aria-hidden style={{ animationDelay: "3s" }} />
 
-          <div className="absolute -bottom-6 right-3 sm:right-4 md:right-8 bg-paper rounded-2xl p-4 sm:p-5 shadow-soft border border-ink/8 max-w-[230px] sm:max-w-[260px] z-20">
+          <div className="absolute -bottom-4 right-3 sm:-bottom-6 sm:right-4 md:right-8 bg-paper rounded-2xl p-3.5 sm:p-5 shadow-soft border border-ink/8 max-w-[200px] sm:max-w-[260px] z-20">
             <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-electric mb-2">● Próxima sessão</p>
             <p className="font-display font-semibold text-base leading-tight text-ink">
               Engenharia na USP — quinta, 19h

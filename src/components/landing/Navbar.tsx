@@ -56,7 +56,7 @@ export const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           {user ? (
             <>
               <Button asChild variant="editorial" size="editorial" className="!py-3 !text-[10px] !bg-electric hover:!bg-hotpink">
@@ -90,14 +90,14 @@ export const Navbar = () => {
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
-          className="sm:hidden inline-flex items-center justify-center size-10 rounded-full border border-ink/10 text-ink hover:bg-softgray transition-colors"
+          className="lg:hidden inline-flex items-center justify-center size-10 rounded-full border border-ink/10 text-ink hover:bg-softgray transition-colors"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
       {open && (
-        <div className="sm:hidden mx-4 mt-3 rounded-2xl bg-paper border border-ink/10 shadow-soft p-5 flex flex-col gap-4 animate-fade-up">
+        <div className="lg:hidden mx-4 mt-3 rounded-2xl bg-paper border border-ink/10 shadow-soft p-5 flex flex-col gap-4 animate-fade-up">
           {links.map((l) => (
             <a
               key={l.href}

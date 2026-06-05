@@ -30,7 +30,7 @@ export const HowItWorks = () => {
             <p className="text-xs uppercase tracking-[0.18em] font-semibold text-hotpink mb-6">
               Como funciona
             </p>
-            <h2 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-[-0.04em] leading-[0.95] text-ink text-balance">
+            <h2 className="font-display font-bold text-[clamp(2rem,8vw,3rem)] sm:text-5xl md:text-6xl tracking-[-0.04em] leading-[0.95] text-ink text-balance">
               Quatro passos.
               <br />
               <span className="text-electric">Zero burocracia.</span>

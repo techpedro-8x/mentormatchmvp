@@ -15,7 +15,7 @@ export const QuoteBanner = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-tr from-ink/85 via-electric/40 to-hotpink/30" />
           <div className="absolute bottom-6 left-5 right-5 sm:bottom-10 sm:left-8 sm:right-8 md:bottom-14 md:left-14 md:right-auto max-w-3xl">
-            <p className="font-display font-semibold text-2xl sm:text-3xl md:text-5xl text-paper leading-[1.1] sm:leading-[1.05] tracking-[-0.03em] text-balance drop-shadow-sm">
+            <p className="font-display font-semibold text-[clamp(1.25rem,5.5vw,1.75rem)] sm:text-3xl md:text-5xl text-paper leading-[1.15] sm:leading-[1.05] tracking-[-0.03em] text-balance drop-shadow-sm">
               "Foi como conversar com a irmã mais velha que eu não tenho — só que ela cursava exatamente Arquitetura na FAU."
             </p>
             <p className="text-paper/90 mt-4 sm:mt-6 text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase">

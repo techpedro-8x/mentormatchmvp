@@ -107,6 +107,12 @@
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: 'ss01', 'cv11';
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   .font-serif {
