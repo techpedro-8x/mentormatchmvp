@@ -22,7 +22,7 @@ export const Pricing = () => {
       <div className="max-w-[1240px] mx-auto">
         <div className="text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
           <p className="text-xs uppercase tracking-[0.18em] font-semibold text-hotpink mb-6">Planos</p>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-[-0.04em] text-ink leading-[0.95] text-balance">
+          <h2 className="font-display font-bold text-[clamp(2rem,8vw,3rem)] sm:text-5xl md:text-6xl tracking-[-0.04em] text-ink leading-[0.95] text-balance">
             Mentoria no seu <span className="text-electric">ritmo.</span>
           </h2>
           <p className="text-ink/70 mt-5 sm:mt-6 leading-relaxed text-base">

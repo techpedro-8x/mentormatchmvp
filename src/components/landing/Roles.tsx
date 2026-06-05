@@ -44,7 +44,7 @@ export const Roles = () => {
     <section className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 md:px-10 bg-softgray border-t border-ink/5">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-20 gap-6 md:gap-8">
-          <h2 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] max-w-[14ch] leading-[0.95] text-ink">
+          <h2 className="font-display font-bold text-[clamp(2rem,9vw,3rem)] sm:text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] max-w-[14ch] leading-[0.95] text-ink">
             Espaço para{" "}
             <span className="text-electric">todos</span> os{" "}
             <span className="text-hotpink">caminhos.</span>
