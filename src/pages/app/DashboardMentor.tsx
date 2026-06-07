@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth, Profile } from "@/hooks/useAuth";
 import { AppShell } from "@/components/app/AppShell";
-import { Sparkles, Check, X, Save, CalendarClock, Plus, Trash2 } from "lucide-react";
+import { Sparkles, Check, X, Save, CalendarClock, Plus, Trash2, Award, Download } from "lucide-react";
 import { toast } from "sonner";
+import jsPDF from "jspdf";
 
 type RequestRow = {
   id: string;
@@ -117,6 +118,67 @@ const DashboardMentor = () => {
 
   const pending = requests.filter((r) => r.status === "pending");
   const history = requests.filter((r) => r.status !== "pending");
+  const completed = requests.filter(
+    (r) => r.status === "accepted" && r.slot && new Date(r.slot.slot_at) < new Date()
+  );
+
+  const downloadCertificate = (r: RequestRow) => {
+    if (!profile || !r.slot) return;
+    const doc = new jsPDF({ orientation: "landscape", unit: "pt", format: "a4" });
+    const w = doc.internal.pageSize.getWidth();
+    const h = doc.internal.pageSize.getHeight();
+
+    // Border
+    doc.setDrawColor(15, 23, 42);
+    doc.setLineWidth(3);
+    doc.rect(24, 24, w - 48, h - 48);
+    doc.setLineWidth(0.5);
+    doc.rect(36, 36, w - 72, h - 72);
+
+    // Header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(236, 72, 153);
+    doc.text("CERTIFICADO DE MENTORIA", w / 2, 100, { align: "center" });
+
+    doc.setFont("times", "bold");
+    doc.setFontSize(42);
+    doc.setTextColor(15, 23, 42);
+    doc.text("Certificado de Conclusão", w / 2, 160, { align: "center" });
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(14);
+    doc.setTextColor(60, 60, 60);
+    doc.text("Certificamos que", w / 2, 220, { align: "center" });
+
+    doc.setFont("times", "bold");
+    doc.setFontSize(30);
+    doc.setTextColor(15, 23, 42);
+    doc.text(profile.full_name || "Mentor", w / 2, 265, { align: "center" });
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(13);
+    doc.setTextColor(60, 60, 60);
+    const body =
+      `concluiu com êxito uma sessão de mentoria voluntária pela plataforma Mentora,\n` +
+      `orientando o(a) estudante ${r.student?.full_name ?? "—"} em ${fmtSlot(r.slot.slot_at)}.\n\n` +
+      `Esta atividade pode ser computada como horas complementares\n` +
+      `junto à instituição ${profile.university || "—"} (${profile.course || "—"}).`;
+    doc.text(body, w / 2, 310, { align: "center", lineHeightFactor: 1.6 });
+
+    // Footer
+    doc.setDrawColor(15, 23, 42);
+    doc.line(w / 2 - 120, h - 110, w / 2 + 120, h - 110);
+    doc.setFontSize(11);
+    doc.text("Mentora · Programa de mentoria voluntária", w / 2, h - 92, { align: "center" });
+
+    doc.setFontSize(9);
+    doc.setTextColor(120, 120, 120);
+    doc.text(`ID: ${r.id}`, w / 2, h - 60, { align: "center" });
+    doc.text(`Emitido em ${new Date().toLocaleDateString("pt-BR")}`, w / 2, h - 46, { align: "center" });
+
+    doc.save(`certificado-mentoria-${r.id.slice(0, 8)}.pdf`);
+  };
 
   return (
     <AppShell accent="hotpink">
@@ -254,6 +316,42 @@ const DashboardMentor = () => {
               </ul>
             </div>
           )}
+
+          <div>
+            <h2 className="font-display text-lg sm:text-2xl font-bold tracking-tight mb-2 flex items-center gap-2">
+              <Award className="size-5 text-hotpink" /> Certificados
+            </h2>
+            <p className="text-sm text-ink/60 mb-4">
+              Baixe certificados das mentorias concluídas para somar nas suas horas complementares.
+            </p>
+            {completed.length === 0 ? (
+              <div className="text-center py-8 border border-dashed border-ink/15 rounded-3xl text-ink/55 text-sm px-4">
+                Você ainda não tem mentorias concluídas. Após o horário da sessão, o certificado aparecerá aqui.
+              </div>
+            ) : (
+              <ul className="space-y-3">
+                {completed.map((r) => (
+                  <li
+                    key={r.id}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-paper border border-ink/8 rounded-3xl p-4 sm:p-5"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-semibold truncate">{r.student?.full_name ?? "Aluno"}</p>
+                      <p className="text-xs text-ink/55 inline-flex items-center gap-1.5 mt-1">
+                        <CalendarClock className="size-3.5" /> {r.slot && fmtSlot(r.slot.slot_at)}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => downloadCertificate(r)}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-ink text-paper text-xs uppercase tracking-[0.16em] font-semibold hover:bg-hotpink transition-colors"
+                    >
+                      <Download className="size-3.5" /> Baixar PDF
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </section>
 
         <aside className="bg-paper border border-ink/8 rounded-3xl p-5 sm:p-6 h-fit lg:sticky lg:top-24">
