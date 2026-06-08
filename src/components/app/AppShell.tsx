@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { LogOut, User as UserIcon } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { LogOut, User as UserIcon, LayoutDashboard, Users } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
@@ -13,6 +13,7 @@ export const AppShell = ({
 }) => {
   const { profile, signOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const accentText = accent === "electric" ? "text-electric" : "text-hotpink";
   const accentBg = accent === "electric" ? "bg-electric/10" : "bg-hotpink/10";
 
@@ -29,13 +30,36 @@ export const AppShell = ({
     .join("")
     .toUpperCase();
 
+  const dashHref = profile?.role === "mentor" ? "/app/mentor" : "/app/aluno";
+  const navLinks = [
+    { href: dashHref, label: "Painel", icon: LayoutDashboard },
+    { href: "/app/comunidade", label: "Comunidade", icon: Users },
+  ];
+
   return (
     <main className="min-h-screen bg-paper text-ink">
       <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-ink/8">
         <div className="max-w-[1280px] mx-auto px-5 sm:px-8 py-4 flex items-center justify-between gap-4">
-          <Link to="/" className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
-            MentorMatch<span className="text-hotpink">.</span>
-          </Link>
+          <div className="flex items-center gap-6 min-w-0">
+            <Link to="/" className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink shrink-0">
+              MentorMatch<span className="text-hotpink">.</span>
+            </Link>
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((l) => {
+                const active = location.pathname === l.href || location.pathname.startsWith(l.href + "/");
+                const Icon = l.icon;
+                return (
+                  <Link
+                    key={l.href}
+                    to={l.href}
+                    className={`inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm font-semibold transition-colors ${active ? `${accentBg} ${accentText}` : "text-ink/65 hover:bg-softgray"}`}
+                  >
+                    <Icon className="size-4" /> {l.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
           <div className="flex items-center gap-3">
             <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full ${accentBg}`}>
               <span className={`size-1.5 rounded-full ${accent === "electric" ? "bg-electric" : "bg-hotpink"} animate-pulse`} />
@@ -57,6 +81,21 @@ export const AppShell = ({
             </button>
           </div>
         </div>
+        <nav className="md:hidden border-t border-ink/8 px-5 py-2 flex items-center gap-1 overflow-x-auto">
+          {navLinks.map((l) => {
+            const active = location.pathname === l.href || location.pathname.startsWith(l.href + "/");
+            const Icon = l.icon;
+            return (
+              <Link
+                key={l.href}
+                to={l.href}
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${active ? `${accentBg} ${accentText}` : "text-ink/65 hover:bg-softgray"}`}
+              >
+                <Icon className="size-3.5" /> {l.label}
+              </Link>
+            );
+          })}
+        </nav>
       </header>
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 py-8 sm:py-12">{children}</div>
     </main>
