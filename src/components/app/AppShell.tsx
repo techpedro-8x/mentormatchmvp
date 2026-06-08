@@ -39,9 +39,9 @@ export const AppShell = ({
   return (
     <main className="min-h-screen bg-paper text-ink">
       <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-ink/8">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-6 min-w-0">
-            <Link to="/" className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink shrink-0">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-3 sm:gap-6 min-w-0 flex-1">
+            <Link to="/" className="font-display font-bold text-lg sm:text-2xl tracking-tight text-ink shrink-0">
               MentorMatch<span className="text-hotpink">.</span>
             </Link>
             <nav className="hidden md:flex items-center gap-1">
@@ -60,20 +60,20 @@ export const AppShell = ({
               })}
             </nav>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full ${accentBg}`}>
               <span className={`size-1.5 rounded-full ${accent === "electric" ? "bg-electric" : "bg-hotpink"} animate-pulse`} />
               <span className={`text-[10px] uppercase tracking-[0.18em] font-semibold ${accentText}`}>
                 {profile?.role === "mentor" ? "Mentor" : "Aluno"}
               </span>
             </div>
-            <div className={`size-10 rounded-full ${accentBg} ${accentText} flex items-center justify-center font-semibold text-sm`}>
+            <div className={`size-9 sm:size-10 rounded-full ${accentBg} ${accentText} flex items-center justify-center font-semibold text-xs sm:text-sm shrink-0`}>
               {initials || <UserIcon className="size-4" />}
             </div>
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex items-center gap-2 size-10 sm:size-auto sm:px-4 sm:py-2.5 rounded-full border border-ink/10 hover:border-ink/30 hover:bg-softgray transition-colors text-sm font-semibold text-ink/75 justify-center"
+              className="inline-flex items-center gap-2 size-9 sm:size-auto sm:px-4 sm:py-2.5 rounded-full border border-ink/10 hover:border-ink/30 hover:bg-softgray transition-colors text-sm font-semibold text-ink/75 justify-center shrink-0"
               aria-label="Sair"
             >
               <LogOut className="size-4" />
