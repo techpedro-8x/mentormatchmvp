@@ -67,7 +67,7 @@ export const AppShell = ({
                 {profile?.role === "mentor" ? "Mentor" : "Aluno"}
               </span>
             </div>
-            <div className={`hidden xs:flex sm:flex size-9 sm:size-10 rounded-full ${accentBg} ${accentText} items-center justify-center font-semibold text-xs sm:text-sm shrink-0`}>
+            <div className={`hidden sm:flex size-10 rounded-full ${accentBg} ${accentText} items-center justify-center font-semibold text-sm shrink-0`}>
               {initials || <UserIcon className="size-4" />}
             </div>
             <button
