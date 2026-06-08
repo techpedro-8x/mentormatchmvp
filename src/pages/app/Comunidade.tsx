@@ -27,10 +27,14 @@ const Comunidade = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { user, profile } = useAuth();
-  const accent = profile?.role === "mentor" ? "hotpink" : "electric";
+  const accent: "electric" | "hotpink" = profile?.role === "mentor" ? "hotpink" : "electric";
   const accentText = accent === "electric" ? "text-electric" : "text-hotpink";
   const accentBg = accent === "electric" ? "bg-electric" : "bg-hotpink";
   const accentBgSoft = accent === "electric" ? "bg-electric/10" : "bg-hotpink/10";
+  const accentFocus =
+    accent === "electric"
+      ? "focus:border-electric focus:ring-electric/15"
+      : "focus:border-hotpink focus:ring-hotpink/15";
 
   const [communities, setCommunities] = useState<Community[]>([]);
   const [query, setQuery] = useState("");
@@ -163,7 +167,7 @@ const Comunidade = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar curso..."
-            className={`w-full bg-paper border border-ink/10 rounded-full pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-${accent} focus:ring-4 focus:ring-${accent}/15`}
+            className={`w-full bg-paper border border-ink/10 rounded-full pl-11 pr-4 py-3 text-sm focus:outline-none focus:ring-4 ${accentFocus}`}
           />
         </div>
 
@@ -280,7 +284,7 @@ const Comunidade = () => {
             rows={1}
             maxLength={2000}
             placeholder={`Mensagem para ${active.name}...`}
-            className={`flex-1 resize-none bg-softgray/60 border border-transparent rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-${accent} focus:bg-paper focus:ring-4 focus:ring-${accent}/15 max-h-32`}
+            className={`flex-1 resize-none bg-softgray/60 border border-transparent rounded-2xl px-4 py-3 text-sm focus:outline-none focus:bg-paper focus:ring-4 ${accentFocus} max-h-32`}
           />
           <button
             type="submit"
