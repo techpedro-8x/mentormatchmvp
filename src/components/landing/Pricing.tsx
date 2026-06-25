@@ -6,7 +6,6 @@ type Plan = {
   features: string[];
   cta: string;
   highlighted?: boolean;
-  institutional?: boolean;
   badge?: string;
 };
 
@@ -42,7 +41,8 @@ const plans: Plan[] = [
       "Suporte prioritário e SLA dedicado",
     ],
     cta: "Falar com nosso time",
-    institutional: true,
+    highlighted: true,
+    badge: "Institucional",
   },
 ];
 
@@ -63,13 +63,10 @@ export const Pricing = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-6xl mx-auto items-stretch">
           {plans.map((p) => {
             const isDark = p.highlighted;
-            const isInst = p.institutional;
             const cardClasses = isDark
               ? "bg-ink text-paper border-ink shadow-editorial relative overflow-hidden"
-              : isInst
-                ? "bg-paper border-ink/15 hover:border-hotpink relative overflow-hidden"
-                : "bg-paper border-ink/10 hover:border-electric";
-            const accent = isDark ? "text-hotpink" : isInst ? "text-hotpink" : "text-electric";
+              : "bg-paper border-ink/10 hover:border-electric";
+            const accent = "text-electric";
             return (
               <article
                 key={p.name}
@@ -78,17 +75,9 @@ export const Pricing = () => {
                 {isDark && (
                   <div className="absolute -top-20 -right-20 size-56 bg-electric rounded-full blur-3xl opacity-40" aria-hidden />
                 )}
-                {isInst && (
-                  <div className="absolute -bottom-24 -left-16 size-56 bg-hotpink rounded-full blur-3xl opacity-10" aria-hidden />
-                )}
                 {p.badge && (
                   <span className="absolute top-5 right-5 text-[10px] uppercase tracking-[0.16em] font-semibold bg-hotpink text-paper px-2.5 py-1 rounded-full">
                     {p.badge}
-                  </span>
-                )}
-                {isInst && (
-                  <span className="relative inline-flex items-center self-start text-[10px] uppercase tracking-[0.18em] font-semibold bg-ink text-paper px-2.5 py-1 rounded-full mb-4">
-                    Para instituições
                   </span>
                 )}
                 <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2 relative">
@@ -113,19 +102,19 @@ export const Pricing = () => {
                     </li>
                   ))}
                 </ul>
-                {isInst && (
-                  <div className="mt-7 pt-5 border-t border-ink/10 relative grid grid-cols-3 gap-3 text-center">
+                {p.name === "Escolar" && (
+                  <div className="mt-7 pt-5 border-t border-paper/10 relative grid grid-cols-3 gap-3 text-center">
                     <div>
-                      <p className="font-display font-bold text-xl text-ink">+50</p>
-                      <p className="text-[10px] uppercase tracking-wider text-ink/55 mt-1">Instituições</p>
+                      <p className="font-display font-bold text-xl text-paper">+50</p>
+                      <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Instituições</p>
                     </div>
                     <div>
-                      <p className="font-display font-bold text-xl text-ink">+5k</p>
-                      <p className="text-[10px] uppercase tracking-wider text-ink/55 mt-1">Alunos</p>
+                      <p className="font-display font-bold text-xl text-paper">+5k</p>
+                      <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Alunos</p>
                     </div>
                     <div>
-                      <p className="font-display font-bold text-xl text-ink">98%</p>
-                      <p className="text-[10px] uppercase tracking-wider text-ink/55 mt-1">Satisfação</p>
+                      <p className="font-display font-bold text-xl text-paper">98%</p>
+                      <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Satisfação</p>
                     </div>
                   </div>
                 )}
