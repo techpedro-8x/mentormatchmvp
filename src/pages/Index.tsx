@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Roles } from "@/components/landing/Roles";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { QuoteBanner } from "@/components/landing/QuoteBanner";
 import { Pricing } from "@/components/landing/Pricing";
@@ -11,7 +10,6 @@ const Index = () => {
     <main className="bg-paper text-ink min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Roles />
       <HowItWorks />
       <QuoteBanner />
       <Pricing />
