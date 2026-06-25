@@ -102,19 +102,19 @@ export const Pricing = () => {
                     </li>
                   ))}
                 </ul>
-                {isInst && (
-                  <div className="mt-7 pt-5 border-t border-ink/10 relative grid grid-cols-3 gap-3 text-center">
+                {p.name === "Escolar" && (
+                  <div className="mt-7 pt-5 border-t border-paper/10 relative grid grid-cols-3 gap-3 text-center">
                     <div>
-                      <p className="font-display font-bold text-xl text-ink">+50</p>
-                      <p className="text-[10px] uppercase tracking-wider text-ink/55 mt-1">Instituições</p>
+                      <p className="font-display font-bold text-xl text-paper">+50</p>
+                      <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Instituições</p>
                     </div>
                     <div>
-                      <p className="font-display font-bold text-xl text-ink">+5k</p>
-                      <p className="text-[10px] uppercase tracking-wider text-ink/55 mt-1">Alunos</p>
+                      <p className="font-display font-bold text-xl text-paper">+5k</p>
+                      <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Alunos</p>
                     </div>
                     <div>
-                      <p className="font-display font-bold text-xl text-ink">98%</p>
-                      <p className="text-[10px] uppercase tracking-wider text-ink/55 mt-1">Satisfação</p>
+                      <p className="font-display font-bold text-xl text-paper">98%</p>
+                      <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Satisfação</p>
                     </div>
                   </div>
                 )}
