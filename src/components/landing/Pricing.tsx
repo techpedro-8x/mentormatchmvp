@@ -105,11 +105,11 @@ export const Pricing = () => {
                 {p.name === "Escolar" && (
                   <div className="mt-7 pt-5 border-t border-paper/10 relative grid grid-cols-3 gap-3 text-center">
                     <div>
-                      <p className="font-display font-bold text-xl text-paper">+50</p>
+                      <p className="font-display font-bold text-xl text-paper">15</p>
                       <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Instituições</p>
                     </div>
                     <div>
-                      <p className="font-display font-bold text-xl text-paper">+5k</p>
+                      <p className="font-display font-bold text-xl text-paper">+3k</p>
                       <p className="text-[10px] uppercase tracking-wider text-paper/55 mt-1">Alunos</p>
                     </div>
                     <div>
