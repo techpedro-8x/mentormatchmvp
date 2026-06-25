@@ -6,7 +6,6 @@ type Plan = {
   features: string[];
   cta: string;
   highlighted?: boolean;
-  institutional?: boolean;
   badge?: string;
 };
 
