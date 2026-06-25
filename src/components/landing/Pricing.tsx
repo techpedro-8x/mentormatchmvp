@@ -42,7 +42,8 @@ const plans: Plan[] = [
       "Suporte prioritário e SLA dedicado",
     ],
     cta: "Falar com nosso time",
-    institutional: true,
+    highlighted: true,
+    badge: "Institucional",
   },
 ];
 
