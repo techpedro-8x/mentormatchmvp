@@ -23,7 +23,7 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section id="como-funciona" className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 md:px-10">
+    <section id="como-funciona" className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 md:px-10 bg-softgray">
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12 sm:mb-16">
           <div className="lg:col-span-5">
