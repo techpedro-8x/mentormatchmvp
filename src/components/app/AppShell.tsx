@@ -41,8 +41,15 @@ export const AppShell = ({
       <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-ink/8">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-3 sm:gap-6 min-w-0 flex-1">
-            <Link to="/" className="font-display font-bold text-lg sm:text-2xl tracking-tight text-ink shrink-0">
-              MentorMatch<span className="text-hotpink">.</span>
+            <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg sm:text-2xl tracking-tight text-ink shrink-0">
+              <img
+                src="/logo.png"
+                alt="MentorMatch"
+                width={32}
+                height={32}
+                className="h-7 w-7 sm:h-8 sm:w-8"
+              />
+              <span>MentorMatch<span className="text-hotpink">.</span></span>
             </Link>
             <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((l) => {
