@@ -43,9 +43,16 @@ export const AuthLayout = ({
         <aside className="hidden lg:flex flex-col justify-between p-12 xl:p-16 relative">
           <Link
             to="/"
-            className="font-display font-bold text-2xl tracking-tight text-ink"
+            className="flex items-center gap-2 font-display font-bold text-2xl tracking-tight text-ink"
           >
-            MentorMatch<span className="text-hotpink">.</span>
+            <img
+              src="/logo.png"
+              alt="MentorMatch"
+              width={40}
+              height={40}
+              className="h-9 w-9"
+            />
+            <span>MentorMatch<span className="text-hotpink">.</span></span>
           </Link>
 
           <div className="space-y-8 animate-fade-up">
@@ -78,9 +85,16 @@ export const AuthLayout = ({
           <div className="w-full max-w-md animate-fade-up">
             <Link
               to="/"
-              className="lg:hidden font-display font-bold text-xl tracking-tight text-ink mb-10 inline-block"
+              className="lg:hidden flex items-center gap-2 font-display font-bold text-xl tracking-tight text-ink mb-10 inline-flex"
             >
-              MentorMatch<span className="text-hotpink">.</span>
+              <img
+                src="/logo.png"
+                alt="MentorMatch"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
+              <span>MentorMatch<span className="text-hotpink">.</span></span>
             </Link>
 
             <div
