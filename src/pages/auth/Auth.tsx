@@ -12,8 +12,15 @@ const Auth = () => {
       <div className="absolute -bottom-40 -right-32 size-[32rem] rounded-full blur-3xl opacity-30 bg-hotpink animate-blob pointer-events-none" style={{ animationDelay: "3s" }} aria-hidden />
 
       <header className="relative z-10 px-5 sm:px-6 md:px-10 py-5 sm:py-6 max-w-[1440px] mx-auto w-full">
-        <Link to="/" className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
-          MentorMatch<span className="text-hotpink">.</span>
+        <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
+          <img
+            src="/logo.png"
+            alt="MentorMatch"
+            width={36}
+            height={36}
+            className="h-8 w-8 sm:h-9 sm:w-9"
+          />
+          <span>MentorMatch<span className="text-hotpink">.</span></span>
         </Link>
       </header>
 

@@ -40,8 +40,15 @@ export const Navbar = () => {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-10 flex items-center justify-between gap-4">
-        <a href="#" className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
-          MentorMatch<span className="text-hotpink">.</span>
+        <a href="#" className="flex items-center gap-2 font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
+          <img
+            src="/logo.png"
+            alt="MentorMatch"
+            width={36}
+            height={36}
+            className="h-8 w-8 sm:h-9 sm:w-9"
+          />
+          <span>MentorMatch<span className="text-hotpink">.</span></span>
         </a>
 
         <div className="hidden lg:flex items-center gap-10">

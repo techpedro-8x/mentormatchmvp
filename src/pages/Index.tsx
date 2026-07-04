@@ -16,8 +16,15 @@ const Index = () => {
       <footer className="bg-ink text-paper mt-10">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-10 py-14 sm:py-16 grid gap-10 md:grid-cols-3">
           <div>
-            <Link to="/" className="font-display font-bold text-2xl tracking-tight">
-              MentorMatch<span className="text-hotpink">.</span>
+            <Link to="/" className="flex items-center gap-2 font-display font-bold text-2xl tracking-tight">
+              <img
+                src="/logo.png"
+                alt="MentorMatch"
+                width={40}
+                height={40}
+                className="h-9 w-9"
+              />
+              <span>MentorMatch<span className="text-hotpink">.</span></span>
             </Link>
             <p className="mt-4 text-sm text-paper/65 leading-relaxed max-w-xs">
               Mentoria honesta entre quem viveu e quem está prestes a viver.
