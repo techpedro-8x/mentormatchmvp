@@ -43,7 +43,7 @@ const Index = () => {
             <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-hotpink mb-4">Contato</p>
             <ul className="space-y-2 text-sm text-paper/75">
               <li>contato@mentormatch.com</li>
-              <li>São Paulo, Brasil</li>
+              <li>Rio Grande do Sul, Brasil</li>
             </ul>
           </div>
         </div>
