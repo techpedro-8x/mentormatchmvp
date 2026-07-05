@@ -16,6 +16,7 @@ import DashboardAluno from "./pages/app/DashboardAluno.tsx";
 import DashboardMentor from "./pages/app/DashboardMentor.tsx";
 import AppRedirect from "./pages/app/AppRedirect.tsx";
 import Comunidade from "./pages/app/Comunidade.tsx";
+import FAQ from "./pages/FAQ.tsx";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/login/aluno" element={<LoginAluno />} />
             <Route path="/login/mentor" element={<LoginMentor />} />
             <Route path="/cadastro/aluno" element={<CadastroAluno />} />
