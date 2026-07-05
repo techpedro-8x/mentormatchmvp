@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { LogOut, User as UserIcon, LayoutDashboard, Users } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
-import { toast } from "sonner";
+import { LogOut, LayoutDashboard, Users } from "lucide-react";
 
 export const AppShell = ({
   children,
@@ -11,26 +9,18 @@ export const AppShell = ({
   children: ReactNode;
   accent?: "electric" | "hotpink";
 }) => {
-  const { profile, signOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const accentText = accent === "electric" ? "text-electric" : "text-hotpink";
   const accentBg = accent === "electric" ? "bg-electric/10" : "bg-hotpink/10";
 
-  const handleLogout = async () => {
-    await signOut();
-    toast.success("Até logo!");
-    navigate("/", { replace: true });
-  };
+  // Modo demo: papel derivado da URL, sem autenticação real
+  const isMentor = location.pathname.includes("/mentor");
+  const demoName = isMentor ? "Ana Beatriz" : "Aluno Demo";
+  const initials = demoName.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase();
+  const dashHref = isMentor ? "/app/mentor" : "/app/aluno";
 
-  const initials = (profile?.full_name || "?")
-    .split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
-
-  const dashHref = profile?.role === "mentor" ? "/app/mentor" : "/app/aluno";
+  const handleExit = () => navigate("/", { replace: true });
   const navLinks = [
     { href: dashHref, label: "Painel", icon: LayoutDashboard },
     { href: "/app/comunidade", label: "Comunidade", icon: Users },
@@ -71,15 +61,15 @@ export const AppShell = ({
             <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full ${accentBg}`}>
               <span className={`size-1.5 rounded-full ${accent === "electric" ? "bg-electric" : "bg-hotpink"} animate-pulse`} />
               <span className={`text-[10px] uppercase tracking-[0.18em] font-semibold ${accentText}`}>
-                {profile?.role === "mentor" ? "Mentor" : "Aluno"}
+                {isMentor ? "Mentor" : "Aluno"}
               </span>
             </div>
             <div className={`hidden sm:flex size-10 rounded-full ${accentBg} ${accentText} items-center justify-center font-semibold text-sm shrink-0`}>
-              {initials || <UserIcon className="size-4" />}
+              {initials}
             </div>
             <button
               type="button"
-              onClick={handleLogout}
+              onClick={handleExit}
               className="inline-flex items-center gap-2 size-9 sm:size-auto sm:px-4 sm:py-2.5 rounded-full border border-ink/10 hover:border-ink/30 hover:bg-softgray transition-colors text-sm font-semibold text-ink/75 justify-center shrink-0"
               aria-label="Sair"
             >

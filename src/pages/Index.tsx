@@ -35,8 +35,8 @@ const Index = () => {
             <ul className="space-y-2 text-sm text-paper/75">
               <li><a href="#como-funciona" className="hover:text-paper transition-colors">Como funciona</a></li>
               <li><a href="#planos" className="hover:text-paper transition-colors">Planos</a></li>
-              <li><Link to="/cadastro/aluno" className="hover:text-paper transition-colors">Sou estudante</Link></li>
-              <li><Link to="/cadastro/mentor" className="hover:text-paper transition-colors">Quero ser mentor</Link></li>
+              <li><Link to="/faq" className="hover:text-paper transition-colors">FAQ</Link></li>
+              <li><Link to="/auth" className="hover:text-paper transition-colors">Entrar</Link></li>
             </ul>
           </div>
           <div>

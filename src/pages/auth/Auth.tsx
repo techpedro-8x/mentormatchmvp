@@ -44,8 +44,8 @@ const Auth = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 animate-fade-up" style={{ animationDelay: "120ms" }}>
             <RoleCard
               initialMode={initialMode}
-              signupTo="/cadastro/aluno"
-              loginTo="/login/aluno"
+              signupTo="/app/aluno"
+              loginTo="/app/aluno"
               icon={<GraduationCap className="size-7" />}
               tag="Sou aluno"
               title="Encontrar um mentor"
@@ -54,8 +54,8 @@ const Auth = () => {
             />
             <RoleCard
               initialMode={initialMode}
-              signupTo="/cadastro/mentor"
-              loginTo="/login/mentor"
+              signupTo="/app/mentor"
+              loginTo="/app/mentor"
               icon={<Sparkles className="size-7" />}
               tag="Sou mentor"
               title="Quero ser mentor"
