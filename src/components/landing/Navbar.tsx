@@ -55,7 +55,7 @@ export const Navbar = () => {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-10 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
           <img
-            src="/logo.png"
+            src="/mentormatchmvp/logo.png"
             alt="MentorMatch"
             width={36}
             height={36}

@@ -18,7 +18,7 @@ const Index = () => {
           <div>
             <Link to="/" className="flex items-center gap-2 font-display font-bold text-2xl tracking-tight">
               <img
-                src="/logo.png"
+                src="/mentormatchmvp/logo.png"
                 alt="MentorMatch"
                 width={40}
                 height={40}
