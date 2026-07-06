@@ -195,39 +195,45 @@ const MentorModal = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-paper w-full sm:max-w-2xl sm:rounded-3xl rounded-t-3xl overflow-hidden max-h-[90vh] flex flex-col animate-fade-up"
+        className="bg-paper w-full sm:max-w-lg sm:rounded-3xl rounded-t-3xl overflow-hidden flex flex-col animate-fade-up"
       >
-        <div className="relative aspect-[16/8] bg-softgray shrink-0">
-          <img src={mentor.photo} alt={mentor.name} className="w-full h-full object-cover" />
+        <div className="flex items-center gap-4 p-5 sm:p-6 border-b border-ink/8">
+          <img
+            src={mentor.photo}
+            alt={mentor.name}
+            className="size-20 sm:size-24 rounded-2xl object-cover shrink-0"
+          />
+          <div className="flex-1 min-w-0">
+            <h3 className="font-display font-bold text-xl sm:text-2xl tracking-tight leading-tight">
+              {mentor.name}
+            </h3>
+            <p className="text-sm text-ink/60 mt-0.5 truncate">{mentor.course}</p>
+            <p className="text-xs text-ink/45 truncate">{mentor.university} · {mentor.period}</p>
+            <span className="inline-flex items-center gap-1 bg-softgray text-ink text-xs font-semibold px-2.5 py-1 rounded-full mt-2">
+              <Star className="size-3 fill-electric text-electric" /> {mentor.rating}
+            </span>
+          </div>
           <button
             onClick={onClose}
             aria-label="Fechar"
-            className="absolute top-4 right-4 size-10 rounded-full bg-paper/90 backdrop-blur flex items-center justify-center hover:bg-paper"
+            className="size-9 rounded-full bg-softgray flex items-center justify-center hover:bg-ink/10 shrink-0 self-start"
           >
-            <X className="size-5" />
+            <X className="size-4" />
           </button>
         </div>
-        <div className="p-6 sm:p-8 overflow-y-auto">
-          <div className="flex items-start justify-between gap-4 mb-2">
-            <div>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight">{mentor.name}</h3>
-              <p className="text-ink/60">{mentor.course} · {mentor.university}</p>
-            </div>
-            <span className="inline-flex items-center gap-1 bg-softgray text-ink text-sm font-semibold px-3 py-1.5 rounded-full shrink-0">
-              <Star className="size-3.5 fill-electric text-electric" /> {mentor.rating}
-            </span>
-          </div>
-          <p className="text-ink/70 mt-4">{mentor.bio}</p>
+
+        <div className="p-5 sm:p-6">
+          <p className="text-sm text-ink/70 leading-relaxed">{mentor.bio}</p>
           <div className="flex flex-wrap gap-1.5 mt-4">
             {mentor.tags.map((t) => (
-              <span key={t} className="text-xs px-3 py-1.5 rounded-full border border-ink/10 text-ink/70">
+              <span key={t} className="text-xs px-3 py-1 rounded-full border border-ink/10 text-ink/70">
                 {t}
               </span>
             ))}
           </div>
 
-          <div className="mt-8">
-            <p className="text-[11px] uppercase tracking-[0.18em] font-semibold text-electric mb-4 flex items-center gap-2">
+          <div className="mt-6">
+            <p className="text-[11px] uppercase tracking-[0.18em] font-semibold text-electric mb-3 flex items-center gap-2">
               <CalendarClock className="size-3.5" /> Horários disponíveis
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">

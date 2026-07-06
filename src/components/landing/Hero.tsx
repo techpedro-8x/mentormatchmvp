@@ -35,11 +35,11 @@ export const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
-            <Link to="/cadastro/aluno" className="cssbuttons-io w-full sm:w-auto sm:self-start justify-center">
+            <Link to="/app/aluno" className="cssbuttons-io w-full sm:w-auto sm:self-start justify-center">
               <span>Encontrar um mentor</span>
             </Link>
             <Button asChild variant="editorialOutline" size="editorial" className="w-full sm:w-auto justify-center">
-              <Link to="/cadastro/mentor">Quero ser mentor</Link>
+              <Link to="/app/mentor">Quero ser mentor</Link>
             </Button>
           </div>
 

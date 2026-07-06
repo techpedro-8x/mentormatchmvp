@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Navbar } from "@/components/landing/Navbar";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
@@ -58,6 +57,10 @@ const groups = [
 ];
 
 const FAQ = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   return (
     <main className="bg-paper text-ink min-h-screen">
       <Navbar />
@@ -95,12 +98,12 @@ const FAQ = () => {
             <p className="text-ink/65 mb-6 max-w-lg mx-auto">
               Escreva para <a href="mailto:contato@mentormatch.com" className="text-electric font-semibold">contato@mentormatch.com</a> ou volte para a página inicial e conheça a plataforma.
             </p>
-            <Link
-              to="/"
+            <button
+              onClick={() => { window.scrollTo({ top: 0, behavior: "instant" }); window.location.href = "/"; }}
               className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-ink text-paper text-xs uppercase tracking-[0.16em] font-semibold hover:bg-electric transition-colors"
             >
               Voltar ao início
-            </Link>
+            </button>
           </div>
         </div>
       </section>

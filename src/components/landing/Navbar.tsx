@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-const links: { label: string; href: string; internal?: boolean }[] = [
-  { label: "Como Funciona", href: "#como-funciona" },
-  { label: "Planos", href: "#planos" },
-  { label: "FAQ", href: "/faq", internal: true },
+const anchorLinks: { label: string; anchor: string }[] = [
+  { label: "Como Funciona", anchor: "como-funciona" },
+  { label: "Planos", anchor: "planos" },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -19,6 +20,29 @@ export const Navbar = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Quando a rota muda para "/" com um hash pendente, faz o scroll
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 80);
+      }
+    }
+  }, [location]);
+
+  const handleAnchor = (anchor: string) => {
+    setOpen(false);
+    if (location.pathname === "/") {
+      // Já está na home, só faz scroll
+      const el = document.getElementById(anchor);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Navega para a home com o hash
+      navigate(`/#${anchor}`);
+    }
+  };
 
   return (
     <nav
@@ -29,7 +53,7 @@ export const Navbar = () => {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-10 flex items-center justify-between gap-4">
-        <a href="#" className="flex items-center gap-2 font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
+        <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">
           <img
             src="/logo.png"
             alt="MentorMatch"
@@ -38,28 +62,24 @@ export const Navbar = () => {
             className="h-8 w-8 sm:h-9 sm:w-9"
           />
           <span>MentorMatch<span className="text-hotpink">.</span></span>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-10">
-          {links.map((l) =>
-            l.internal ? (
-              <Link
-                key={l.href}
-                to={l.href}
-                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/65 hover:text-electric transition-colors"
-              >
-                {l.label}
-              </Link>
-            ) : (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/65 hover:text-electric transition-colors"
-              >
-                {l.label}
-              </a>
-            )
-          )}
+          {anchorLinks.map((l) => (
+            <button
+              key={l.anchor}
+              onClick={() => handleAnchor(l.anchor)}
+              className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/65 hover:text-electric transition-colors"
+            >
+              {l.label}
+            </button>
+          ))}
+          <Link
+            to="/faq"
+            className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/65 hover:text-electric transition-colors"
+          >
+            FAQ
+          </Link>
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -87,27 +107,22 @@ export const Navbar = () => {
 
       {open && (
         <div className="lg:hidden mx-4 mt-3 rounded-2xl bg-paper border border-ink/10 shadow-soft p-5 flex flex-col gap-4 animate-fade-up">
-          {links.map((l) =>
-            l.internal ? (
-              <Link
-                key={l.href}
-                to={l.href}
-                onClick={() => setOpen(false)}
-                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/75"
-              >
-                {l.label}
-              </Link>
-            ) : (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/75"
-              >
-                {l.label}
-              </a>
-            )
-          )}
+          {anchorLinks.map((l) => (
+            <button
+              key={l.anchor}
+              onClick={() => handleAnchor(l.anchor)}
+              className="text-left text-xs uppercase tracking-[0.16em] font-semibold text-ink/75"
+            >
+              {l.label}
+            </button>
+          ))}
+          <Link
+            to="/faq"
+            onClick={() => setOpen(false)}
+            className="text-xs uppercase tracking-[0.16em] font-semibold text-ink/75"
+          >
+            FAQ
+          </Link>
           <div className="h-px bg-ink/10 my-1" />
           <Link
             to="/auth?mode=login"
