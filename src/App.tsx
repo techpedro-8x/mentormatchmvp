@@ -25,7 +25,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/mentormatchmvp/">
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Index />} />
